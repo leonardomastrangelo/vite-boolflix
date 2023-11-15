@@ -12,7 +12,9 @@
             {{ orTitle }}
         </h3>
         <!-- original language -->
-        <h3> {{ language }}</h3>
+        <div>
+            <img class="flag-size" :src="languageFlag" :alt="language">
+        </div>
         <!-- vote average -->
         <h3>
             {{ vote }}
@@ -32,7 +34,23 @@ export default {
     },
     data() {
         return {
-            imageUrl: "https://image.tmdb.org/t/p/w342/"
+            imageUrl: "https://image.tmdb.org/t/p/w342/",
+            languageFlag: "",
+        }
+    },
+    mounted() {
+        if (this.language === "en") {
+            this.languageFlagFlag = "/images/flags/england.png"
+        } else if (this.language === 'ja') {
+            this.languageFlag = "/images/flags/japan.png"
+        } else if (this.language === 'es') {
+            this.languageFlag = "/images/flags/flag.png"
+        } else if (this.language === 'it') {
+            this.languageFlag = "/images/flags/circle.png"
+        } else if (this.language === 'fr') {
+            this.languageFlag = "/images/flags/france.png"
+        } else {
+            this.languageFlag = "/images/flags/earth.png"
         }
     }
 }
@@ -42,6 +60,10 @@ export default {
 .my-fluid {
     width: 100%;
     display: block;
+}
+
+.flag-size {
+    width: 30px;
 }
 
 h2 {
