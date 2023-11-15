@@ -7,7 +7,7 @@ export const store = reactive({
     series: "search/tv",
   },
   params: {
-    query: "null",
+    query: "a",
     api_key: "2f40b8e5f9dc4424458c6502f4a7ce56",
   },
   error: "error",
