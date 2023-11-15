@@ -17,7 +17,7 @@
         </div>
         <!-- vote average -->
         <h3>
-            {{ vote }}
+            <i class="fa-solid fa-star" v-for="vote in Math.ceil(this.reducedVote / 2)"></i>
         </h3>
     </div>
 </template>
@@ -36,22 +36,29 @@ export default {
         return {
             imageUrl: "https://image.tmdb.org/t/p/w342/",
             languageFlag: "",
+            reducedVote: this.vote
         }
     },
+    methods: {
+        convertToFlag() {
+            if (this.language === "en") {
+                this.languageFlag = "/images/flags/england.png"
+            } else if (this.language === 'ja') {
+                this.languageFlag = "/images/flags/japan.png"
+            } else if (this.language === 'es') {
+                this.languageFlag = "/images/flags/flag.png"
+            } else if (this.language === 'it') {
+                this.languageFlag = "/images/flags/circle.png"
+            } else if (this.language === 'fr') {
+                this.languageFlag = "/images/flags/france.png"
+            } else {
+                this.languageFlag = "/images/flags/earth.png"
+            }
+        },
+
+    },
     mounted() {
-        if (this.language === "en") {
-            this.languageFlagFlag = "/images/flags/england.png"
-        } else if (this.language === 'ja') {
-            this.languageFlag = "/images/flags/japan.png"
-        } else if (this.language === 'es') {
-            this.languageFlag = "/images/flags/flag.png"
-        } else if (this.language === 'it') {
-            this.languageFlag = "/images/flags/circle.png"
-        } else if (this.language === 'fr') {
-            this.languageFlag = "/images/flags/france.png"
-        } else {
-            this.languageFlag = "/images/flags/earth.png"
-        }
+        this.convertToFlag()
     }
 }
 </script>
