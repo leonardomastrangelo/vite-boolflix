@@ -1,6 +1,9 @@
 <template>
-    <div>
+    <div v-if="imagePath !== null">
         <img class="my-fluid" :src="imageUrl + imagePath" :alt="title">
+    </div>
+    <div v-else>
+        <img class="my-fluid" src="/images/logo.jpg" alt="logo">
     </div>
     <div>
         <!-- title -->
@@ -17,7 +20,8 @@
         </div>
         <!-- vote average -->
         <h3>
-            <i class="fa-solid fa-star" v-for="vote in Math.ceil(this.reducedVote / 2)"></i>
+            <i v-if="reducedVote !== 0" class="fa-solid fa-star" v-for="vote in reduceVote()"></i>
+            <div v-else class="fw-bold"> 0 votes </div>
         </h3>
     </div>
 </template>
@@ -41,20 +45,15 @@ export default {
     },
     methods: {
         convertToFlag() {
-            if (this.language === "en") {
-                this.languageFlag = "/images/flags/england.png"
-            } else if (this.language === 'ja') {
-                this.languageFlag = "/images/flags/japan.png"
-            } else if (this.language === 'es') {
-                this.languageFlag = "/images/flags/flag.png"
-            } else if (this.language === 'it') {
-                this.languageFlag = "/images/flags/circle.png"
-            } else if (this.language === 'fr') {
-                this.languageFlag = "/images/flags/france.png"
-            } else {
+            if (this.language !== "ar" && this.language !== "de" && this.language !== "en" && this.language !== "es" && this.language !== "fr" && this.language !== "it" && this.language !== "ja") {
                 this.languageFlag = "/images/flags/earth.png"
+            } else {
+                this.languageFlag = "/images/flags/" + this.language + ".png"
             }
         },
+        reduceVote() {
+            return Math.ceil(this.reducedVote / 2)
+        }
 
     },
     mounted() {
