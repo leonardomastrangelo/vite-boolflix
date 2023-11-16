@@ -2,16 +2,20 @@
     <header class="container-fluid">
         <div class="row">
             <!-- logo -->
-            <div class="col-6">
+            <div class="col-2">
                 <img id="logo" src="/images/logo.jpg" alt="logo">
             </div>
 
-            <div class="col-6 d-flex flex-column align-items-end justify-content-center">
-                <div class="me-2">
-                    <label for="search" class="form label text-light">Search Movies/Tv Series by name</label>
-                    <input type="text" id="search" name="search" class="form-control" placeholder="The Witcher"
-                        v-model="userSearch">
-                    <button @click="$emit('filteringMoviesAndSeries', userSearch)">Search</button>
+            <div class="col-10 d-flex justify-content-end align-items-center">
+                <div id="search-element" class="d-flex justify-content-end align-items-center p-2">
+                    <button class="border-0 bg-transparent" @click="$emit('filteringMoviesAndSeries', userSearch)">
+                        <i class="fa-solid fa-magnifying-glass p-2 text-light"></i>
+                    </button>
+                    <div class="me-2">
+                        <input type="text" id="search" name="search" class="form-control bg-transparent border-0"
+                            placeholder="The Witcher" v-model="userSearch"
+                            @keyup="$emit('filteringMoviesAndSeries', userSearch)">
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,5 +43,13 @@ header {
 
 #logo {
     width: 200px;
+}
+
+input {
+    width: 0px;
+}
+
+#search-element:hover input {
+    width: 100%;
 }
 </style>

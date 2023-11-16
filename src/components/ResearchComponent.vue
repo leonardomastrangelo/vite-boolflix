@@ -37,6 +37,7 @@
 import { store } from '../assets/data/store.js';
 import CardComponent from './CardComponent.vue';
 export default {
+    name: "ResearchComponent",
     data() {
         return {
             store,
