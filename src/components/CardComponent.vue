@@ -1,9 +1,6 @@
 <template>
-    <div v-if="imagePath !== null">
-        <img class="my-fluid" :src="imageUrl + imagePath" :alt="title">
-    </div>
-    <div v-else>
-        <img class="my-fluid" src="/images/logo.jpg" alt="logo">
+    <div>
+        <img class="my-fluid" :src="getImage()" :alt="title">
     </div>
     <div>
         <!-- title -->
@@ -20,8 +17,9 @@
         </div>
         <!-- vote average -->
         <h3>
-            <i v-if="reducedVote !== 0" class="fa-solid fa-star" v-for="vote in reduceVote()"></i>
-            <div v-else class="fw-bold"> 0 votes </div>
+            <i v-if="reducedVote !== 0" class="fa-star" :class="(n <= reduceVote()) ? 'fa-solid' : 'fa-regular'"
+                v-for="n in 5"></i>
+            <div v-else class="fw-bold"> No reviews </div>
         </h3>
     </div>
 </template>
@@ -40,16 +38,22 @@ export default {
         return {
             imageUrl: "https://image.tmdb.org/t/p/w342/",
             languageFlag: "",
-            reducedVote: this.vote
+            reducedVote: this.vote,
+            flags: [
+                'ar', 'de', 'en', 'es', 'fr', 'it', 'ja'
+            ]
         }
     },
     methods: {
-        convertToFlag() {
-            if (this.language !== "ar" && this.language !== "de" && this.language !== "en" && this.language !== "es" && this.language !== "fr" && this.language !== "it" && this.language !== "ja") {
-                this.languageFlag = "/images/flags/earth.png"
+        getImage() {
+            if (this.imagePath !== null) {
+                return this.imageUrl + this.imagePath
             } else {
-                this.languageFlag = "/images/flags/" + this.language + ".png"
+                return '/images/logo.jpg'
             }
+        },
+        convertToFlag() {
+            (!this.flags.includes(this.language)) ? this.languageFlag = "/images/flags/earth.png" : this.languageFlag = "/images/flags/" + this.language + ".png"
         },
         reduceVote() {
             return Math.ceil(this.reducedVote / 2)
