@@ -12,8 +12,10 @@ export const store = reactive({
   },
   error: "error",
   loading: false,
+  activeResearch: false,
   moviesList: [],
   seriesList: [],
+  popularList: [],
 });
 
 // https://image.tmdb.org/t/p/w342

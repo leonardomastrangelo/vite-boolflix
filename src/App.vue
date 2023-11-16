@@ -1,6 +1,7 @@
 <template>
   <HeaderSearchBar @filtering-movies-and-series="getMoviesAndSeries" />
-  <ResearchComponent />
+  <ResearchComponent :class="{ 'd-none': !store.activeResearch, 'd-none': store.params.query === '' }" />
+  <HomeComponent />
 </template>
 
 <script>
@@ -9,6 +10,7 @@ import { store } from './assets/data/store.js'
 // components
 import HeaderSearchBar from './components/HeaderSearchBar.vue';
 import ResearchComponent from './components/ResearchComponent.vue';
+import HomeComponent from './components/HomeComponent.vue';
 export default {
   name: "App",
   data() {
@@ -19,6 +21,7 @@ export default {
   components: {
     HeaderSearchBar,
     ResearchComponent,
+    HomeComponent
   },
   methods: {
     getMoviesAndSeries(value) {

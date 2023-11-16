@@ -1,6 +1,6 @@
 <template>
     <div class="my-card py-4" @mouseleave="show = false">
-        <div class="position-relative">
+        <div>
             <img class="my-fluid" :src="getImage()" :alt="title">
         </div>
         <div class="description p-4">
