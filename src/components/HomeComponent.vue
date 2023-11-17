@@ -11,6 +11,7 @@
                     class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2  py-2"
                     :class="{ 'active': isActive('Movie', index) }">
                     <img class="w-100" :src="imageUrl + item.backdrop_path" />
+                    <h4 class="fs-5 text-center py-2" v-show="isActive('Movie', index)">{{ item.title }}</h4>
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Popular Series Tv</h2>
@@ -19,6 +20,7 @@
                     class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2 py-2"
                     :class="{ 'active': isActive('Serie', index) }">
                     <img class="w-100" :src="imageUrl + item.backdrop_path" />
+                    <h4 class="fs-5 text-center py-2" v-show="isActive('Serie', index)">{{ item.name }}</h4>
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Upcoming Movies</h2>
@@ -27,6 +29,8 @@
                     class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2 py-2">
                     <img class="w-100" :src="imageUrl + item.backdrop_path"
                         :class="{ 'active': isActive('Upcoming', index) }" />
+                    <h4 class="fs-5 text-center py-3" v-show="isActive('Upcoming', index)">{{ item.title }}</h4>
+
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Actors in recent movies/series</h2>
@@ -35,6 +39,8 @@
                     class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2 py-2">
                     <img class="w-100" :src="imageUrl + item.profile_path"
                         :class="{ 'active': isActive('Actor', index) }" />
+                    <h4 class="fs-5 text-center py-4" v-show="isActive('Actor', index)">{{ item.name }}</h4>
+
                 </div>
             </div>
         </main>
@@ -200,10 +206,10 @@ export default {
     mounted() {
         setInterval(() => {
             this.updateActiveItemMovies()
-        }, 2000);
-        setInterval(() => this.updateActiveItemSeries(), 2000);
-        setInterval(() => this.updateActiveItemUpcoming(), 2000);
-        setInterval(() => this.updateActiveItemActors(), 2000);
+        }, 3000);
+        setInterval(() => this.updateActiveItemSeries(), 3500);
+        setInterval(() => this.updateActiveItemUpcoming(), 4000);
+        setInterval(() => this.updateActiveItemActors(), 5500);
 
     }
 };

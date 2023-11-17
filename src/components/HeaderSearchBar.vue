@@ -6,17 +6,23 @@
                 <a @click="showHome" href="#home"><img id="logo" src="/images/logo.jpg" alt="logo"></a>
             </div>
 
-            <div class="col-2 d-flex justify-content-center align-items-center" v-for="link in headerLinks">
+            <div class="col-1  d-flex justify-content-center align-items-center position-relative">
+                <a @click="showMoviesSection" href="#movies-sec"
+                    :class="{ 'active-link': store.showMoviesSection }">Movies</a>
+                <div :class="{ 'active-bar': store.showMoviesSection }"></div>
+            </div>
+
+            <div class="col-1 d-flex justify-content-center align-items-center" v-for="link in headerLinks">
                 <a href="#">
                     {{ link }}
                 </a>
             </div>
 
-            <div class="col-4 d-flex justify-content-end align-items-center">
+            <div class="col-6 d-flex justify-content-end align-items-center">
                 <div id="search-element" class="d-flex justify-content-end align-items-center p-2">
                     <button class="border-0 bg-transparent"
                         @click="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
-                        <i class="fa-solid fa-magnifying-glass p-2 text-light"></i>
+                        <a href="#research-component"><i class="fa-solid fa-magnifying-glass p-2 text-light"></i></a>
                     </button>
                     <div class="me-2">
                         <input type="text" id="search" name="search" class="form-control border-0" placeholder="The Witcher"
@@ -37,11 +43,12 @@ export default {
     name: "HeaderSearchBar",
     data() {
         return {
+            store,
             userSearch: "",
             headerLinks: [
                 'tv series',
-                'movies',
-                'originals'
+                'originals',
+                'explore'
             ]
         }
     },
@@ -52,11 +59,19 @@ export default {
                 store.showHome = true
             } else {
                 store.showHome = false
+                store.showMoviesSection = false
+
             }
         },
         showHome() {
             store.activeResearch = false
+            store.showMoviesSection = false
             store.showHome = true
+        },
+        showMoviesSection() {
+            store.activeResearch = false
+            store.showHome = false
+            store.showMoviesSection = true
         }
     }
 }
@@ -89,5 +104,23 @@ input {
 #search-element:hover input {
     width: 100%;
     opacity: 1;
+}
+
+.active-link {
+    color: rgba(255, 255, 255, 0.664);
+}
+
+.active-bar {
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.664);
+}
+
+a:hover {
+    transform: scale(1.1);
+    color: rgba(255, 255, 255, 0.392);
 }
 </style>
