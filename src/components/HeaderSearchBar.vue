@@ -20,7 +20,8 @@
                     </button>
                     <div class="me-2">
                         <input type="text" id="search" name="search" class="form-control border-0" placeholder="The Witcher"
-                            v-model="userSearch" @keyup="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
+                            v-model="userSearch"
+                            @keyup.enter="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
                     </div>
                 </div>
             </div>

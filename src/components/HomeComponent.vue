@@ -8,28 +8,31 @@
             <h2 class="text-light display-5 pb-3">Popular Movies</h2>
             <div class="row" ref="movies">
                 <div v-for="(item, index) in store.popularList" :key="item.id"
-                    class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 col-xxl-2 py-2"
+                    class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2  py-2"
                     :class="{ 'active': isActive('Movie', index) }">
                     <img class="w-100" :src="imageUrl + item.backdrop_path" />
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Popular Series Tv</h2>
-            <div class="row">
-                <div v-for="(item, index) in store.popularListSeries" :key="item.id" class="col-2 py-2"
+            <div class="row" ref="series">
+                <div v-for="(item, index) in store.popularListSeries" :key="item.id"
+                    class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2 py-2"
                     :class="{ 'active': isActive('Serie', index) }">
                     <img class="w-100" :src="imageUrl + item.backdrop_path" />
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Upcoming Movies</h2>
-            <div class="row">
-                <div v-for="(item, index) in store.upComing" :key="item.id" class="col-2 py-2">
+            <div class="row" ref="upcoming">
+                <div v-for="(item, index) in store.upComing" :key="item.id"
+                    class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2 py-2">
                     <img class="w-100" :src="imageUrl + item.backdrop_path"
                         :class="{ 'active': isActive('Upcoming', index) }" />
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Actors in recent movies/series</h2>
-            <div class="row">
-                <div v-for="(item, index) in store.actorsList" :key="item.id" class="col-2 py-2">
+            <div class="row" ref="upcomingseries">
+                <div v-for="(item, index) in store.actorsList" :key="item.id"
+                    class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 col-xxl-2 py-2">
                     <img class="w-100" :src="imageUrl + item.profile_path"
                         :class="{ 'active': isActive('Actor', index) }" />
                 </div>
@@ -102,7 +105,7 @@ export default {
                 } else {
                     this.$refs.movies.scrollBy({
                         top: 0,
-                        left: 240,
+                        left: 310,
                         behavior: "smooth",
                     })
                 }
@@ -113,14 +116,66 @@ export default {
 
         updateActiveItemSeries() {
             this.activeSerieIndex = (this.activeSerieIndex + 1) % store.popularListSeries.length;
+            this.$nextTick(() => {
+                if (this.activeSerieIndex === store.popularList.length - 1) {
+                    this.$refs.series.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                    })
+                    this.activeSerieIndex = 0
+
+                } else {
+                    this.$refs.series.scrollBy({
+                        top: 0,
+                        left: 310,
+                        behavior: "smooth",
+                    })
+                }
+            })
         },
 
         updateActiveItemUpcoming() {
             this.activeUpcomingIndex = (this.activeUpcomingIndex + 1) % store.upComing.length;
+            this.$nextTick(() => {
+                if (this.activeUpcomingIndex === store.popularList.length - 1) {
+                    this.$refs.upcoming.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                    })
+                    this.activeUpcomingIndex = 0
+
+                } else {
+                    this.$refs.upcoming.scrollBy({
+                        top: 0,
+                        left: 310,
+                        behavior: "smooth",
+                    })
+                }
+            })
+
         },
 
         updateActiveItemActors() {
             this.activeActorIndex = (this.activeActorIndex + 1) % store.actorsList.length;
+            this.$nextTick(() => {
+                if (this.activeActorIndex === store.popularList.length - 1) {
+                    this.$refs.upcomingseries.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                    })
+                    this.activeActorIndex = 0
+
+                } else {
+                    this.$refs.upcomingseries.scrollBy({
+                        top: 0,
+                        left: 300,
+                        behavior: "smooth",
+                    })
+                }
+            })
         },
 
     },
@@ -137,9 +192,9 @@ export default {
             this.updateActiveItemMovies()
 
         }, 2000);
-        setInterval(() => this.updateActiveItemSeries(), 1000);
-        setInterval(() => this.updateActiveItemUpcoming(), 1000);
-        setInterval(() => this.updateActiveItemActors(), 1000);
+        setInterval(() => this.updateActiveItemSeries(), 2000);
+        setInterval(() => this.updateActiveItemUpcoming(), 2000);
+        setInterval(() => this.updateActiveItemActors(), 2000);
 
     }
 };
