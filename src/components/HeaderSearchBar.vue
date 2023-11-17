@@ -3,16 +3,16 @@
         <div class="row">
             <!-- logo -->
             <div class="col-2">
-                <img id="logo" src="/images/logo.jpg" alt="logo">
+                <a @click="showHome" href="#home"><img id="logo" src="/images/logo.jpg" alt="logo"></a>
             </div>
 
-            <div class="col-1 d-flex justify-content-center align-items-center" v-for="link in headerLinks">
+            <div class="col-2 d-flex justify-content-center align-items-center" v-for="link in headerLinks">
                 <a href="#">
                     {{ link }}
                 </a>
             </div>
 
-            <div class="col-7 d-flex justify-content-end align-items-center">
+            <div class="col-4 d-flex justify-content-end align-items-center">
                 <div id="search-element" class="d-flex justify-content-end align-items-center p-2">
                     <button class="border-0 bg-transparent"
                         @click="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
@@ -48,6 +48,15 @@ export default {
     methods: {
         showResearch() {
             store.activeResearch = true
+            if (this.userSearch === "") {
+                store.showHome = true
+            } else {
+                store.showHome = false
+            }
+        },
+        showHome() {
+            store.activeResearch = false
+            store.showHome = true
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div id="home">
+    <div id="home" v-if="store.showHome">
         <header class="position-relative">
             <video muted autoplay loop src="/trailer.mp4"></video>
             <img src="/images/oppen-logo.png" alt="oppenheimer">
@@ -56,6 +56,7 @@ export default {
             activeSerieIndex: 0,
             activeUpcomingIndex: 0,
             activeActorIndex: 0,
+            isHovered: false
         };
     },
     components: {
@@ -112,7 +113,6 @@ export default {
             })
 
         },
-
 
         updateActiveItemSeries() {
             this.activeSerieIndex = (this.activeSerieIndex + 1) % store.popularListSeries.length;
@@ -177,7 +177,6 @@ export default {
                 }
             })
         },
-
     },
 
     created() {
@@ -190,7 +189,6 @@ export default {
     mounted() {
         setInterval(() => {
             this.updateActiveItemMovies()
-
         }, 2000);
         setInterval(() => this.updateActiveItemSeries(), 2000);
         setInterval(() => this.updateActiveItemUpcoming(), 2000);

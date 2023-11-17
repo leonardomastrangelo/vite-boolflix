@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main v-if="store.activeResearch === true">
         <section id="movies" class="container py-4">
             <h2 class="display-2">Movies</h2>
             <div v-if="store.moviesList.length === 0">

@@ -19,6 +19,7 @@ export const store = reactive({
   popularListSeries: [],
   upComing: [],
   actorsList: [],
+  showHome: true,
 });
 
 // https://image.tmdb.org/t/p/w342
