@@ -1,13 +1,14 @@
 <template>
     <div id="home">
         <header class="position-relative">
-            <video muted loop src="/trailer.mp4"></video>
+            <video muted autoplay loop src="/trailer.mp4"></video>
             <img src="/images/oppen-logo.png" alt="oppenheimer">
         </header>
         <main class="container-fluid overflow-hidden py-5 px-2">
             <h2 class="text-light display-5 pb-3">Popular Movies</h2>
-            <div class="row" ref="column">
-                <div v-for="(item, index) in store.popularList" :key="item.id" class="col-2 py-2"
+            <div class="row" ref="movies">
+                <div v-for="(item, index) in store.popularList" :key="item.id"
+                    class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 col-xxl-2 py-2"
                     :class="{ 'active': isActive('Movie', index) }">
                     <img class="w-100" :src="imageUrl + item.backdrop_path" />
                 </div>
@@ -52,7 +53,6 @@ export default {
             activeSerieIndex: 0,
             activeUpcomingIndex: 0,
             activeActorIndex: 0,
-            columnWidth: 0,
         };
     },
     components: {
@@ -90,7 +90,26 @@ export default {
 
         updateActiveItemMovies() {
             this.activeMovieIndex = (this.activeMovieIndex + 1) % store.popularList.length;
+            this.$nextTick(() => {
+                if (this.activeMovieIndex === store.popularList.length - 1) {
+                    this.$refs.movies.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                    })
+                    this.activeMovieIndex = 0
+
+                } else {
+                    this.$refs.movies.scrollBy({
+                        top: 0,
+                        left: 240,
+                        behavior: "smooth",
+                    })
+                }
+            })
+
         },
+
 
         updateActiveItemSeries() {
             this.activeSerieIndex = (this.activeSerieIndex + 1) % store.popularListSeries.length;
@@ -114,7 +133,10 @@ export default {
 
     },
     mounted() {
-        setInterval(() => this.updateActiveItemMovies(), 1000);
+        setInterval(() => {
+            this.updateActiveItemMovies()
+
+        }, 2000);
         setInterval(() => this.updateActiveItemSeries(), 1000);
         setInterval(() => this.updateActiveItemUpcoming(), 1000);
         setInterval(() => this.updateActiveItemActors(), 1000);
@@ -145,6 +167,7 @@ header img {
 .row {
     flex-wrap: nowrap;
     overflow-x: auto;
+    padding-bottom: 80px;
 }
 
 .col-3 {
