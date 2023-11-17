@@ -93,89 +93,100 @@ export default {
         },
 
         updateActiveItemMovies() {
-            this.activeMovieIndex = (this.activeMovieIndex + 1) % store.popularList.length;
-            this.$nextTick(() => {
-                if (this.activeMovieIndex === store.popularList.length - 1) {
-                    this.$refs.movies.scrollTo({
-                        top: 0,
-                        left: 0,
-                        behavior: "smooth",
-                    })
-                    this.activeMovieIndex = 0
+            if (store.showHome) {
 
-                } else {
-                    this.$refs.movies.scrollBy({
-                        top: 0,
-                        left: 310,
-                        behavior: "smooth",
-                    })
-                }
-            })
+                this.activeMovieIndex = (this.activeMovieIndex + 1) % store.popularList.length;
+                this.$nextTick(() => {
+                    if (this.activeMovieIndex === store.popularList.length - 1) {
+                        this.$refs.movies.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                        })
+                        this.activeMovieIndex = 0
+
+                    } else {
+                        this.$refs.movies.scrollBy({
+                            top: 0,
+                            left: 310,
+                            behavior: "smooth",
+                        })
+                    }
+                })
+            }
 
         },
 
         updateActiveItemSeries() {
-            this.activeSerieIndex = (this.activeSerieIndex + 1) % store.popularListSeries.length;
-            this.$nextTick(() => {
-                if (this.activeSerieIndex === store.popularList.length - 1) {
-                    this.$refs.series.scrollTo({
-                        top: 0,
-                        left: 0,
-                        behavior: "smooth",
-                    })
-                    this.activeSerieIndex = 0
+            if (store.showHome) {
 
-                } else {
-                    this.$refs.series.scrollBy({
-                        top: 0,
-                        left: 310,
-                        behavior: "smooth",
-                    })
-                }
-            })
+                this.activeSerieIndex = (this.activeSerieIndex + 1) % store.popularListSeries.length;
+                this.$nextTick(() => {
+                    if (this.activeSerieIndex === store.popularList.length - 1) {
+                        this.$refs.series.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                        })
+                        this.activeSerieIndex = 0
+
+                    } else {
+                        this.$refs.series.scrollBy({
+                            top: 0,
+                            left: 310,
+                            behavior: "smooth",
+                        })
+                    }
+                })
+            }
         },
 
         updateActiveItemUpcoming() {
-            this.activeUpcomingIndex = (this.activeUpcomingIndex + 1) % store.upComing.length;
-            this.$nextTick(() => {
-                if (this.activeUpcomingIndex === store.popularList.length - 1) {
-                    this.$refs.upcoming.scrollTo({
-                        top: 0,
-                        left: 0,
-                        behavior: "smooth",
-                    })
-                    this.activeUpcomingIndex = 0
+            if (store.showHome) {
+                this.activeUpcomingIndex = (this.activeUpcomingIndex + 1) % store.upComing.length;
+                this.$nextTick(() => {
+                    if (this.activeUpcomingIndex === store.popularList.length - 1) {
+                        this.$refs.upcoming.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                        })
+                        this.activeUpcomingIndex = 0
 
-                } else {
-                    this.$refs.upcoming.scrollBy({
-                        top: 0,
-                        left: 310,
-                        behavior: "smooth",
-                    })
-                }
-            })
+                    } else {
+                        this.$refs.upcoming.scrollBy({
+                            top: 0,
+                            left: 310,
+                            behavior: "smooth",
+                        })
+                    }
+                })
+            }
 
         },
 
         updateActiveItemActors() {
-            this.activeActorIndex = (this.activeActorIndex + 1) % store.actorsList.length;
-            this.$nextTick(() => {
-                if (this.activeActorIndex === store.popularList.length - 1) {
-                    this.$refs.upcomingseries.scrollTo({
-                        top: 0,
-                        left: 0,
-                        behavior: "smooth",
-                    })
-                    this.activeActorIndex = 0
+            if (store.showHome) {
 
-                } else {
-                    this.$refs.upcomingseries.scrollBy({
-                        top: 0,
-                        left: 300,
-                        behavior: "smooth",
-                    })
-                }
-            })
+                this.activeActorIndex = (this.activeActorIndex + 1) % store.actorsList.length;
+                this.$nextTick(() => {
+                    if (this.activeActorIndex === store.popularList.length - 1) {
+                        this.$refs.upcomingseries.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                        })
+                        this.activeActorIndex = 0
+
+                    } else {
+                        this.$refs.upcomingseries.scrollBy({
+                            top: 0,
+                            left: 300,
+                            behavior: "smooth",
+                        })
+                    }
+                })
+            }
         },
     },
 
