@@ -1,5 +1,5 @@
 <template>
-    <header class="container-fluid">
+    <header class="container-fluid" v-show="store.showHeader">
         <div class="row">
             <!-- logo -->
             <div class="col-2">

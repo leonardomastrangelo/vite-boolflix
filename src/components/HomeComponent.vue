@@ -5,7 +5,7 @@
             <img src="/images/oppen-logo.png" alt="oppenheimer">
         </header>
         <main class="container-fluid overflow-hidden py-5 px-2">
-            <h2 class="text-light display-5 pb-3">Popular Movies</h2>
+            <h2 class="text-light display-2 fw-bold pb-3">Popular Movies</h2>
             <div class="movie-container" ref="movies" @mouseover="() => isHoveredMovie = true"
                 @mouseout="() => isHoveredMovie = false">
                 <div v-for="(item, index) in store.popularList" :key="item.id" class="movie-item"
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <h2 class="text-light display-5 pb-3">Popular Series Tv</h2>
+            <h2 class="text-light display-2 fw-bold pb-3">Popular Series Tv</h2>
             <div class="movie-container" ref="series" @mouseover="() => isHoveredSeries = true"
                 @mouseout="() => isHoveredSeries = false">
                 <div v-for="(item, index) in store.popularListSeries" :key="item.id" class="movie-item"
@@ -44,7 +44,7 @@
                     }}</h4>
                 </div>
             </div>
-            <h2 class="text-light display-5 pb-3">Upcoming Movies</h2>
+            <h2 class="text-light display-2 fw-bold pb-3">Upcoming Movies</h2>
             <div class="movie-container" ref="upcoming" @mouseover="() => isHoveredUpcoming = true"
                 @mouseout="() => isHoveredUpcoming = false">
                 <div v-for="(item, index) in store.upComing" :key="item.id" class="movie-item"
@@ -54,7 +54,7 @@
                         item.title }}</h4>
                 </div>
             </div>
-            <h2 class="text-light display-5 pb-3">Actors in recent movies/series</h2>
+            <h2 class="text-light display-2 fw-bold pb-3">Actors in recent movies/series</h2>
             <div class="movie-container" ref="upcomingseries" @mouseover="() => isHoveredActors = true"
                 @mouseout="() => isHoveredActors = false">
                 <div v-for="(item, index) in store.actorsList" :key="item.id" class="movie-item"

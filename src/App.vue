@@ -1,4 +1,5 @@
 <template>
+  <SplashComponent />
   <HeaderSearchBar @filtering-movies-and-series="getMoviesAndSeries" />
   <ResearchComponent :class="{ 'd-none': !store.activeResearch, 'd-none': store.params.query === '' }" />
   <HomeComponent />
@@ -14,6 +15,7 @@ import HeaderSearchBar from './components/HeaderSearchBar.vue';
 import ResearchComponent from './components/ResearchComponent.vue';
 import HomeComponent from './components/HomeComponent.vue';
 import MovieListComponent from './components/MovieListComponent.vue';
+import SplashComponent from './components/SplashComponent.vue';
 export default {
   name: "App",
   data() {
@@ -26,6 +28,7 @@ export default {
     ResearchComponent,
     HomeComponent,
     MovieListComponent,
+    SplashComponent,
   },
   methods: {
     getMoviesAndSeries(value) {
