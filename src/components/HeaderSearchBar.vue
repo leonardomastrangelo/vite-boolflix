@@ -46,9 +46,9 @@ export default {
             store,
             userSearch: "",
             headerLinks: [
+                'explore',
                 'tv series',
                 'originals',
-                'explore'
             ]
         }
     },

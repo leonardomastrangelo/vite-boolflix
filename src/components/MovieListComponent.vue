@@ -53,7 +53,6 @@ export default {
             axios.get(recUrl, { params: store.params }).then((res) => {
                 store.moviesRec = res.data.results
             })
-
         }
 
     },

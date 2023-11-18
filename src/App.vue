@@ -3,6 +3,7 @@
   <ResearchComponent :class="{ 'd-none': !store.activeResearch, 'd-none': store.params.query === '' }" />
   <HomeComponent />
   <MovieListComponent />
+  <ExploreComponent />
 </template>
 
 <script>
@@ -38,8 +39,12 @@ export default {
         store.seriesList = res.data.results
       })
     },
+
   },
   created() {
+  },
+  mounted() {
+
   }
 }
 </script>

@@ -21,8 +21,14 @@ export const store = reactive({
   actorsList: [],
   showHome: true,
   showMoviesSection: false,
+  showExplore: false,
   nowPlayingList: [],
   moviesRec: [],
+  genres: [],
+  credits: {
+    cast: [],
+    crew: [],
+  },
 });
 
 // https://image.tmdb.org/t/p/w342
