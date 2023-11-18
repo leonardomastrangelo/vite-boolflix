@@ -40,7 +40,8 @@
                 <div v-for="(item, index) in store.popularListSeries" :key="item.id" class="movie-item"
                     :class="{ 'active': isActive('Serie', index) }" @click="selectItem('Serie', index)">
                     <img class="movie-image" :src="imageUrl + item.backdrop_path" />
-                    <h4 class="fs-5 text-center py-2" v-show="isActive('Serie', index)">{{ item.name }}</h4>
+                    <h4 class="fs-5 text-center py-3 cast rounded-bottom-3" v-show="isActive('Serie', index)">{{ item.name
+                    }}</h4>
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Upcoming Movies</h2>
@@ -49,7 +50,8 @@
                 <div v-for="(item, index) in store.upComing" :key="item.id" class="movie-item"
                     :class="{ 'active': isActive('Upcoming', index) }" @click="selectItem('Upcoming', index)">
                     <img class="movie-image" :src="imageUrl + item.backdrop_path" />
-                    <h4 class="fs-5 text-center py-3" v-show="isActive('Upcoming', index)">{{ item.title }}</h4>
+                    <h4 class="fs-5 text-center py-3 cast rounded-bottom-3" v-show="isActive('Upcoming', index)">{{
+                        item.title }}</h4>
                 </div>
             </div>
             <h2 class="text-light display-5 pb-3">Actors in recent movies/series</h2>
@@ -58,7 +60,8 @@
                 <div v-for="(item, index) in store.actorsList" :key="item.id" class="movie-item"
                     :class="{ 'active': isActive('Actor', index) }" @click="selectItem('Actor', index)">
                     <img class="movie-image" :src="imageUrl + item.profile_path" />
-                    <h4 class="fs-5 text-center py-4" v-show="isActive('Actor', index)">{{ item.name }}</h4>
+                    <h4 class="fs-5 text-center py-4 cast rounded-bottom-3" v-show="isActive('Actor', index)">{{ item.name
+                    }}</h4>
                 </div>
             </div>
         </main>
