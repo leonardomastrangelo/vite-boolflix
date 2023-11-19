@@ -132,5 +132,28 @@ h3 {
     background-color: rgb(20, 19, 19);
     font-size: 0.85em;
     padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.shown::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    background-color: #CCCCCC;
+}
+
+.shown::-webkit-scrollbar {
+    width: 12px;
+    background-color: rgb(20, 19, 19);
+}
+
+.shown::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #d62929be;
+    background-image: -webkit-linear-gradient(90deg,
+            transparent,
+            rgba(0, 0, 0, 0.4) 50%,
+            transparent,
+            transparent)
 }
 </style>

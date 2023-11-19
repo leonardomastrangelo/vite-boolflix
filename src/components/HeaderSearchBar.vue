@@ -1,34 +1,49 @@
 <template>
-    <header class="container-fluid" v-show="store.showHeader">
-        <div class="row">
-            <!-- logo -->
-            <div class="col-2">
-                <a @click="showHome" href="#home"><img id="logo" src="/images/logo.jpg" alt="logo"></a>
-            </div>
+    <header class="container-fluid d-flex justify-content-between" v-show="store.showHeader">
+        <!-- logo -->
+        <div class="d-none d-md-block">
+            <a @click="showHome" href="#home"><img id="logo" src="/images/logo.jpg" alt="logo"></a>
+        </div>
 
-            <div class="col-1  d-flex justify-content-center align-items-center position-relative">
-                <a @click="showMoviesSection" href="#movies-sec"
-                    :class="{ 'active-link': store.showMoviesSection }">Movies</a>
-                <div :class="{ 'active-bar': store.showMoviesSection }"></div>
-            </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <ul>
+                <li class=" position-relative py-3">
+                    <a @click="showMoviesSection" href="#movies-sec"
+                        :class="{ 'active-link': store.showMoviesSection }">Movies</a>
+                    <div :class="{ 'active-bar': store.showMoviesSection }"></div>
+                </li>
+            </ul>
+            <ul class="d-lg-flex d-none justify-content-center align-items-center">
+                <li v-for="link in headerLinks">
+                    <a href="#">
+                        {{ link }}
+                    </a>
+                </li>
+            </ul>
+            <div class="dropdown px-3 d-lg-none">
+                <button class="bg-transparent border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
 
-            <div class="col-1 d-flex justify-content-center align-items-center" v-for="link in headerLinks">
-                <a href="#">
-                    {{ link }}
-                </a>
+                </button>
+                <ul class="dropdown-menu py-3">
+                    <li v-for="link in headerLinks">
+                        <a href="#">
+                            {{ link }}
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div class="col-6 d-flex justify-content-end align-items-center">
-                <div id="search-element" class="d-flex justify-content-end align-items-center p-2">
-                    <button class="border-0 bg-transparent"
-                        @click="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
-                        <a href="#research-component"><i class="fa-solid fa-magnifying-glass p-2 text-light"></i></a>
-                    </button>
-                    <div class="me-2">
-                        <input type="text" id="search" name="search" class="form-control border-0" placeholder="The Witcher"
-                            v-model="userSearch"
-                            @keyup.enter="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
-                    </div>
+        <div class="d-flex justify-content-end align-items-center">
+            <div id="search-element" class="d-flex justify-content-end align-items-center p-2">
+                <button class="border-0 bg-transparent"
+                    @click="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
+                    <a href="#research-component"><i class="fa-solid fa-magnifying-glass p-2 text-light"></i></a>
+                </button>
+                <div class="me-2">
+                    <input type="text" id="search" name="search" class="form-control border-0" placeholder="The Witcher"
+                        v-model="userSearch" @keyup.enter="$emit('filteringMoviesAndSeries', userSearch); showResearch()">
                 </div>
             </div>
         </div>
@@ -38,7 +53,6 @@
 
 <script>
 import { store } from '../assets/data/store';
-
 export default {
     name: "HeaderSearchBar",
     data() {
@@ -82,6 +96,19 @@ export default {
 
 header {
     background-color: $primary_color;
+    position: fixed;
+    margin-bottom: 100%;
+
+    z-index: 1000;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+        padding: 0 30px;
+    }
 }
 
 a {
@@ -114,7 +141,7 @@ input {
     width: 100%;
     height: 3px;
     position: absolute;
-    bottom: 0;
+    top: 110%;
     left: 0;
     background-color: rgba(255, 255, 255, 0.664);
 }
@@ -122,5 +149,17 @@ input {
 a:hover {
     transform: scale(1.1);
     color: rgba(255, 255, 255, 0.392);
+}
+
+.dropdown-toggle::after {
+    color: rgba(255, 255, 255, 0.664);
+}
+
+.dropdown-menu {
+    background-color: rgba(30, 28, 28, 0.999);
+
+    a {
+        color: rgb(43, 43, 43);
+    }
 }
 </style>

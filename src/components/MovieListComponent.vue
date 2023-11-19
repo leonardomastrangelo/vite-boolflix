@@ -2,7 +2,7 @@
     <div v-if="store.showMoviesSection">
         <div id="movies-sec">
             <main class="container py-5">
-                <h2 class="display-2 text-uppercase">Now playing Movies</h2>
+                <h2 class="display-2 text-uppercase pb-2">Now playing Movies</h2>
                 <section class="row justify-content-center pb-5">
                     <div class="col-8 col-md-4 col-xl-3 position-relative" v-for="(movie, index) in store.nowPlayingList"
                         :key="movie.id">
@@ -11,8 +11,14 @@
                             :plot="movie.overview" />
                     </div>
                 </section>
-                <h2 class="display-2 text-uppercase">Reccomandations</h2>
-                <p>Se ti piace Oppenheimer amerai sicuramente..</p>
+                <h2 class="display-2 text-uppercase pb-2 pt-5">Reccomandations</h2>
+                <p>
+                    If u loved
+                    <span class="text-uppercase fs-3 px-2">
+                        {{ store.moviesRec[0.].title }}
+                    </span>
+                    yuo would like...
+                </p>
                 <div class="row justify-content-center">
                     <div class="col-8 col-md-4 col-xl-3 position-relative" v-for="(movie, index) in store.moviesRec"
                         :key="movie.id">
@@ -71,5 +77,7 @@ export default {
 
 #movies-sec {
     background: $bg_gradient;
+    padding-bottom: 220px;
+    padding-top: 80px;
 }
 </style>

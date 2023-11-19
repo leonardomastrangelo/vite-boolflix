@@ -5,7 +5,7 @@
         </div>
         <div v-show="store.showUser">
             <h2 class="display-2 text-center">Chi sta guardando Netflix?</h2>
-            <div id="users" class="d-flex justify-content-center align-items-center">
+            <div id="users" class="d-flex justify-content-center align-items-center flex-wrap">
                 <div v-for="user in users">
                     <div class="box">
                         <img class="my-fluid" :src="user.img" :alt="user.name">
@@ -14,7 +14,7 @@
                         {{ user.name }}
                     </h2>
                 </div>
-                <div>
+                <div id="animated-me">
                     <div class="box" @click="showAll">
                         <img class="my-fluid" src="/images/me.jpg" alt="me">
                     </div>
@@ -40,11 +40,11 @@ export default {
                     img: "/images/av-1.jpg"
                 },
                 {
-                    name: "Pluto",
+                    name: "Carovana",
                     img: "/images/av-2.jpg"
                 },
                 {
-                    name: "Carovana",
+                    name: "Pluto",
                     img: "/images/av-3.jpg"
                 },
             ],
@@ -78,6 +78,15 @@ export default {
 .box {
     width: 150px;
     margin: 20px;
+
+    img:hover {
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.404);
+        transform: scale(1.15);
+    }
+
+    & {
+        cursor: pointer;
+    }
 }
 
 .my-fluid {
@@ -94,5 +103,23 @@ export default {
 
 h2 {
     padding-top: 200px;
+}
+
+#animated-me {
+    animation: entering 2s cubic-bezier(0.97, 0.35, 0.39, 0.77) 0.5s forwards;
+    opacity: 0;
+    transform: translateX(250%);
+}
+
+@keyframes entering {
+    0% {
+        opacity: 0;
+        transform: translateX(250%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
 </style>

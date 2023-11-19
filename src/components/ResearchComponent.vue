@@ -55,6 +55,7 @@ export default {
 
 main {
     background: $bg_gradient;
-    padding: 100px 0;
+    padding-top: 100px;
+    padding-bottom: 450px;
 }
 </style>
