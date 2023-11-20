@@ -303,6 +303,7 @@ export default {
 
 video {
     width: 100%;
+    padding-top: 10px;
 }
 
 header img {

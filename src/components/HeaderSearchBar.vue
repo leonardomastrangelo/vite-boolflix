@@ -97,8 +97,6 @@ export default {
 header {
     background-color: $primary_color;
     position: fixed;
-    margin-bottom: 100%;
-
     z-index: 1000;
 }
 
