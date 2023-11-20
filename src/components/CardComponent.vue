@@ -139,7 +139,7 @@ h3 {
 .shown::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
     border-radius: 10px;
-    background-color: #CCCCCC;
+    background-color: rgb(20, 19, 19);
 }
 
 .shown::-webkit-scrollbar {
